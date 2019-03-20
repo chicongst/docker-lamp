@@ -46,6 +46,8 @@ Step 3
 
 ```shell
 sudo docker-compose exec admin composer install
+sudo docker-compose exec admin php artisan key:generate
+sudo docker-compose exec admin php artisan jwt:secret
 sudo docker-compose exec admin php artisan migrate
 ```
 
