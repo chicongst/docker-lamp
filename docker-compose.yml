@@ -3,38 +3,35 @@ networks:
   default: {}
 services:
   mysql:
-    container_name: chicongst_mysql
+    container_name: ${REPO_NAME}_mysql
     image: mysql:5.6
     volumes:
       - ./dbdata:/var/lib/mysql
     ports:
-      - 3307:3306
+      - 6033:3306
     environment:
-      MYSQL_DATABASE: cclocaldb
+      MYSQL_DATABASE: ${REPO_NAME}_db
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: admin
       MYSQL_PASSWORD: password
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_RANDOM_ROOT_PASSWORD: "false"
-  admin:
-    container_name: cc_admin
+    env_file: .env
+
+  server:
+    container_name: ${REPO_NAME}_server
     build:
-      context: ./admin
+      context: ./server
     ports:
-      - "69:80"
+      - "8082:80"
     volumes:
-      - ${ADMIN_SOURCE_PATH}:/var/www/html/cc_admin
-      - ./admin/apache/logs:/var/log/httpd
+      - ${SOURCE_PATH}:/var/www/${REPO_NAME}
+      - ./server/apache/logs:/var/log/httpd
     links:
       - mysql
     depends_on:
       - mysql
     env_file: .env
-  smtp:
-    container_name: docker_smtp
-    image: schickling/mailcatcher
-    ports:
-      - 1090:1080
 
 volumes:
   datastore: {}

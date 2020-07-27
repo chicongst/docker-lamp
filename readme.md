@@ -1,10 +1,6 @@
-# CC Docker
+# LAMP Docker
 
-Just a basic docker
-
-## Getting Started
-
-These instructions will cover usage information and for the docker container 
+Basic docker for LAMP | Linux Apche Mysql PHP
 
 ### Prerequisities
 
@@ -15,50 +11,15 @@ In order to run this container you'll need docker installed.
 * [OS X](https://docs.docker.com/mac/started/)
 * [Linux](https://docs.docker.com/linux/started/)
 
-### Install project example
+#### Step 
 
 ```shell
-git clone https://github.com/chicongst9x/laravel-auth-api.git
-mv laravel-auth-api cc_admin
-cd cc_admin
-chmod -R 777 storage/
-cp .env.example .env
-```
-
-### Install docker
-
-#### Step by step
-
-Step 1
-
-```shell
-git clone https://github.com/chicongst9x/cc_docker.git
-```
-
-Step 2
-
-```shell
-cd cc-docker
+git clone https://github.com/chicongst/lamp_docker_base.git
+cd lamp_docker_base
 cp .env.example .env 
 sudo docker-compose up --build
 ```
-Step 3
-
+#### Access to container
 ```shell
-sudo docker-compose exec admin composer install
-sudo docker-compose exec admin php artisan key:generate
-sudo docker-compose exec admin php artisan jwt:secret
-sudo docker-compose exec admin php artisan migrate
+sudo docker-compose exec server /bin/bash
 ```
-
-#### Environment Variables
-
-* `MYSQL_CONTAINER_USER`  - mysql
-* `MYSQL_CONTAINER_GROUP` - mysql
-* `ADMIN_SOURCE_PATH`     - /var/www/html/cc_admin
-
-## Authors
-
-* **Chicongst** - *Work* - [Github](https://github.com/chicongst9x)
-
-See more (https://github.com/chicongst9x/laravel-auth-api)

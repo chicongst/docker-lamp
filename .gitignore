@@ -1,5 +1,4 @@
-/admin/apache
-
+/server/apache/*
 /dbdata
 .env
 .idea
