@@ -4,11 +4,11 @@ networks:
 services:
   mysql:
     container_name: ${REPO_NAME}_mysql
-    image: mysql:5.6
+    image: mysql:5.7
     volumes:
       - ./dbdata:/var/lib/mysql
     ports:
-      - 6033:3306
+      - 6033:3306 # LOCAL_PORT:DOCKER_PORT
     environment:
       MYSQL_DATABASE: ${REPO_NAME}_db
       MYSQL_ROOT_PASSWORD: root
@@ -23,10 +23,10 @@ services:
     build:
       context: ./server
     ports:
-      - "8082:80"
+      - "8082:80" # LOCAL_PORT:DOCKER_PORT
     volumes:
       - ${SOURCE_PATH}:/var/www/${REPO_NAME}
-      - ./server/apache/logs:/var/log/httpd
+      - ./docker/${REPO_NAME}/apache/logs:/var/log/httpd
     links:
       - mysql
     depends_on:

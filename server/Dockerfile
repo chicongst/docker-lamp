@@ -8,7 +8,7 @@ ARG REPO_NAME=nkvd
 RUN yum clean all
 RUN yum -y update
 
-RUN yum install -y php${PHP_VERSION} php${PHP_VERSION}-common php${PHP_VERSION}-mysql php${PHP_VERSION}-xml php${PHP_VERSION}-xmlrpc php${PHP_VERSION}-curl php${PHP_VERSION}-gd php${PHP_VERSION}-imagick php${PHP_VERSION}-cli php${PHP_VERSION}-dev php${PHP_VERSION}-imap php${PHP_VERSION}-mbstring php${PHP_VERSION}-opcache php${PHP_VERSION}-soap php${PHP_VERSION}-zip php${PHP_VERSION}-intl -y
+RUN yum install -y php${PHP_VERSION} php${PHP_VERSION}-common php${PHP_VERSION}-mysql  php${PHP_VERSION}-pdo_mysql php${PHP_VERSION}-xml php${PHP_VERSION}-xmlrpc php${PHP_VERSION}-curl php${PHP_VERSION}-gd php${PHP_VERSION}-imagick php${PHP_VERSION}-cli php${PHP_VERSION}-dev php${PHP_VERSION}-imap php${PHP_VERSION}-mbstring php${PHP_VERSION}-opcache php${PHP_VERSION}-soap php${PHP_VERSION}-zip php${PHP_VERSION}-intl -y
 
 RUN yum install -y nano
 RUN yum install -y vim

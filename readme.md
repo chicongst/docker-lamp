@@ -21,5 +21,8 @@ sudo docker-compose up --build
 ```
 #### Access to container
 ```shell
+# Access to server
 sudo docker-compose exec server /bin/bash
+# Access to database
+sudo docker-compose exec mysql /bin/bash
 ```
